@@ -1,5 +1,5 @@
 ---
-project: quran-nurtech
+project: quran
 public: true
 type: fix
 audience: users

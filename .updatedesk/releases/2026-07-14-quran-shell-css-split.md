@@ -1,5 +1,5 @@
 ---
-project: quran-nurtech
+project: quran
 public: false
 type: internal
 audience: team
