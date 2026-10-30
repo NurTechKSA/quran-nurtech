@@ -16,6 +16,7 @@ const sN = Number(Astro.params.surah);
 const aN = Number(Astro.params.ayah);
 const target = `/${sN}:${aN}`;
 const canonical = new URL(target, Astro.site).href;
+const ogImageUrl = new URL(`/og/surah-${sN}.png`, Astro.site).href;
 ---
 
 <!doctype html>
@@ -25,6 +26,17 @@ const canonical = new URL(target, Astro.site).href;
     <meta http-equiv="refresh" content={`0; url=${target}`} />
     <link rel="canonical" href={canonical} />
     <title>Аят {sN}:{aN}</title>
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Коран онлайн" />
+    <meta property="og:title" content={`Аят ${sN}:${aN}`} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`Аят ${sN}:${aN}`} />
+    <meta name="twitter:image" content={ogImageUrl} />
     <script is:inline define:vars={{ target }}>
       location.replace(target);
     </script>

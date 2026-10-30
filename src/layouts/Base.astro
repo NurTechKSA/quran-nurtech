@@ -87,6 +87,9 @@ const desc =
   description ??
   'Коран онлайн на русском языке: чтение, перевод, тафсир ас-Саади, аудио чтецов, поиск и заучивание. 114 сур, 6236 аятов.';
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
+// OG share image: per-surah cards for /surah/N/, shared default elsewhere.
+const ogImage = surahId ? `/og/surah-${surahId}.png` : `/og/default.png`;
+const ogImageUrl = new URL(ogImage, Astro.site).href;
 const path = Astro.url.pathname;
 const mushafHref = getMushafHrefForPath(path);
 const tab = (name: 'home' | 'read' | 'mushaf' | 'search') => {
@@ -114,6 +117,15 @@ const tab = (name: 'home' | 'read' | 'mushaf' | 'search') => {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={desc} />
     <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:alt" content={title} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={desc} />
+    <meta name="twitter:image" content={ogImageUrl} />
     <meta name="theme-color" content="#3f4a58" />
     <link rel="icon" href="/favicon.png?v=g2" type="image/png" />
     <link rel="manifest" href="/manifest.webmanifest" />
